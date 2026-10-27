@@ -1,0 +1,11 @@
+**/*.xdv
+**/*.out
+**/*.toc
+**/*.log
+**/*.synctex.gz
+**/*.fls
+**/*.fdb_latexmk
+**/*.aux
+**/*.bbl
+**/*.pdf
+.vscode/*

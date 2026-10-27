@@ -1,0 +1,28 @@
+% !TEX root = ../main.tex
+
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage[hidelinks]{hyperref}
+\usepackage{ctex}
+
+\newtheorem{exercise}{习题}
+\newtheorem{lemma}{引理}
+
+\newenvironment{ex}[1]{
+    \renewcommand{\theexercise}{\thesection.#1}
+    \begin{exercise}
+}{
+    \end{exercise}
+}
+
+\newenvironment{solution}{
+    \begin{proof}[解]
+}{
+    \end{proof}
+}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\p}[1]{\left(#1\right)}
+\newcommand{\br}[1]{\left[#1\right]}
+\newcommand{\cb}[1]{\left\{#1\right\}}
+\newcommand{\abs}[1]{\left|#1\right|}
