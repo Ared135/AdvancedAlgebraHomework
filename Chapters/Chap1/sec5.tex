@@ -1,0 +1,66 @@
+% !TEX root = ../../main.tex
+
+\renewcommand{\thesection}{1.5}
+
+\section{因式分解定理}\label{sec:1.5}
+
+\begin{ex}{2}\label{ex:1.5.2}
+    设 \(1\) 是 \(ax^4+bx^2+1\) 的重根, 求 \(a,b\).
+\end{ex}
+
+\begin{solution}
+    由 \(1\) 是 \(ax^4+bx^2+1\) 的重根, 有
+    \[
+    f(1)=0,\quad f'(1)=0.
+    \]
+    即
+    \begin{gather*}
+        a+b+1=0, \\
+        4a+2b=0.
+    \end{gather*}
+    解得
+    \[
+    a=1,\quad b=-2.\qedhere
+    \]
+\end{solution}
+
+\begin{ex}{4}\label{ex:1.5.4}
+    证明多项式 \(f\) 是某个既约多项式的幂当且仅当有既约多项式 \(p\) 使得 \(f\mid p^m\),
+    其中 \(m\) 为正整数.
+\end{ex}
+
+\begin{proof}
+    充分性. 下证 \(f\) 为 \(p\) 的幂.
+
+    假设 \(f\) 有不与 \(p\) 相伴的因式 \(q\) 满足 \(\deg q\geq1\), 有
+    \begin{equation}
+        (p,q)=1.
+        \label{eq:1.5.4-Coprimability}
+    \end{equation}
+    由
+    \[
+    f\mid p^m,
+    \]
+    有
+    \begin{equation}
+        q\mid p^m.
+        \label{eq:1.5.4-Divisibility}
+    \end{equation}
+    式~\eqref{eq:1.5.4-Coprimability} 与式~\eqref{eq:1.5.4-Divisibility} 矛盾,
+    故 \(f\) 的所有因式都与 \(p\) 相伴, 即 \(f\) 为 \(p\) 的幂.
+
+    必要性. 设
+    \[
+    f=at^k,
+    \]
+    其中 \(a\) 为非零常数, \(t\) 为既约多项式, \(k\) 为非负整数.
+
+    令 \(p=t,m=k\), 则
+    \[
+    f=ap^m.
+    \]
+    由于 \((f,a)=1\), 有
+    \[
+    f\mid p^m.\qedhere
+    \]
+\end{proof}
