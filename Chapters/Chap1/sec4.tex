@@ -1,0 +1,162 @@
+% !TEX root = ../../main.tex
+
+\renewcommand{\thesection}{1.4}
+
+\section{最大公因式与最小公倍式}\label{sec:1.4}
+
+\begin{ex}{1}\label{ex:1.4.1}
+    设 \(f(x)=x^4+x^3+3x^2-4x-1,g(x)=x^3+x^2-x-1\), 求 \((f(x),g(x))\).
+\end{ex}
+
+\begin{solution}
+    进行辗转相除法如下.
+    \[
+    \begin{array}{r | l | l | l}
+        q=x & x^4+x^3+3x^2-4x-1 & x^3+x^2-x-1 & \frac{1}{4}x+\frac{7}{16}=q_1 \\
+        & x^4+x^3-x^2-x & x^3-\frac{3}{4}x^2-\frac{1}{4}x & \\
+        \cline{2-3}
+        q_2=\frac{64}{9}x+\frac{16}{9} & 4x^2-3x-1=r_1 & \frac{7}{4}x^2-\frac{3}{4}x-1 & \\
+        & 4x^2-4x & \frac{7}{4}x^2-\frac{21}{16}x-\frac{7}{16} & \\
+        \cline{2-3}
+        & x-1 & \frac{9}{16}x-\frac{9}{16}=r_2 & \\
+        & x-1 & & \\
+        \cline{2-3}
+        & 0=r_3 & &
+    \end{array}
+    \]
+    由此可知 \(f(x)\) 和 \(g(x)\) 的最大公因式为与 \(r_2=\frac{9}{16}x-\frac{9}{16}\) 相伴的首一多项式.
+    故 \((f(x),g(x))=x-1\).
+\end{solution}
+
+\begin{ex}{4}\label{ex:1.4.4}
+    设 \((f,g)=(f,h)=1\), 证明 \((f,gh)=1\).
+\end{ex}
+
+\begin{proof}
+    由 Bézout 等式, 存在 \(\phi_1,\psi_1,\phi_2,\psi_2\in\Omega[x]\) 使得
+    \begin{gather*}
+        \phi_1f+\psi_1g=1,\\
+        \phi_2f+\psi_2h=1.
+    \end{gather*}
+    二式相乘, 得
+    \[
+    \phi_1\phi_2f^2+\phi_1\psi_2fh+\phi_2\psi_1fg+\psi_1\psi_2gh=1,
+    \]
+    即
+    \[
+    (\phi_1\phi_2f+\phi_1\psi_2h+\phi_2\psi_1g)f+\psi_1\psi_2gh=1.
+    \]
+    该式满足互质形式的 Bézout 等式, 故 \((f,gh)=1\).
+\end{proof}
+
+\begin{ex}{7}\label{ex:1.4.7}
+    证明 \((f_1,g_1)(f_2,g_2)=(f_1f_2,f_1g_2,g_1f_2,g_1g_2)\).
+\end{ex}
+
+\begin{proof}
+    设
+    \begin{gather*}
+        d_1=(f_1,g_1),\quad d_2=(f_2,g_2),\\
+        f_1=p_1d_1,\quad g_1=q_1d_1,\quad(p_1,q_1)=1,\\
+        f_2=p_2d_2,\quad g_2=q_2d_2,\quad(p_2,q_2)=1,\\
+        h=(p_1p_2,p_1q_2,q_1p_2,q_1q_2).
+    \end{gather*}
+    由 Bézout 等式, 存在 \(\phi,\psi\in\Omega[x]\) 使得
+    \[
+    \phi p_1+\psi q_1=1,
+    \]
+    因此, 有
+    \begin{gather}
+        \phi p_1p_2+\psi q_1p_2=p_2,\label{eq:1.4.7-1}\\
+        \phi p_1q_2+\psi q_1q_2=q_2.\label{eq:1.4.7-2}
+    \end{gather}
+    由
+    \[
+    h\mid p_1p_2,\quad h\mid q_1p_2,
+    \]
+    及式\eqref{eq:1.4.7-1}, 有
+    \[
+    h\mid p_2;
+    \]
+    由
+    \[
+    h\mid p_1q_2,\quad h\mid q_1q_2,
+    \]
+    及式\eqref{eq:1.4.7-2}, 有
+    \[
+    h\mid q_2.
+    \]
+    故
+    \[
+    h\mid(p_2,q_2),
+    \]
+    即
+    \[
+    h\mid1.
+    \]
+    因此, 有
+    \[
+    (p_1p_2,p_1q_2,q_1p_2,q_1q_2)=1.
+    \]
+    故
+    \begin{align*}
+        (f_1f_2,f_1g_2,g_1f_2,g_1g_2)&=(p_1p_2d_1d_2,p_1q_2d_1d_2,q_1p_2d_1d_2,q_1q_2d_1d_2)\\
+        &=d_1d_2(p_1p_2,p_1q_2,q_1p_2,q_1q_2)\\
+        &=d_1d_2=(f_1,g_1)(f_2,g_2).\qedhere
+    \end{align*}
+\end{proof}
+
+\begin{ex}{8}\label{ex:1.4.8}
+    设 \(f,g\) 都是非零多项式, 证明 \(f\) 和 \(g\) 不互质当且仅当有非零多项式 \(u,v\) 使得
+    \[
+    uf+vg=0,\quad\deg u<\deg g,\quad\deg v<\deg f.
+    \]
+\end{ex}
+
+\begin{proof}
+    充分性. 由题设, 有 \(-uf=vg\), 故 \(f\mid vg\).
+
+    假设 \((f,g)=1\), 则 \(f\mid v\), 故有
+    \[
+    \deg v\geq\deg f,
+    \]
+    与题设矛盾. 故 \(f\) 与 \(g\) 不互质.
+    
+    必要性. 设 \(d=(f,g),f=pd,g=qd\), 则 \(\deg p<\deg f,\deg q<\deg g\).
+
+    令 \(u=q,v=-p\), 则满足
+    \begin{gather*}
+        uf+vg=qpd-pqd=0,\\
+        \deg u=\deg q<\deg g,\quad\deg v=\deg p<\deg f.\qedhere
+    \end{gather*}
+\end{proof}
+
+\begin{ex}{10}\label{ex:1.4.10}
+    设 \(f,g\in\Omega[x]\), 令 \(M=\{\phi f+\psi g\mid\phi,\psi\in\Omega[x]\}\).
+    设 \(d\) 是 \(M\) 中一个次数最低的多项式, 证明 \(d\) 是 \(f,g\) 的最大公因式.
+\end{ex}
+
+\begin{proof}
+    设 \(d=\phi f+\psi g\).
+    先证 \(d\) 为 \(f,g\) 的公因式. 设 \(f=pd+r\), 其中 \(\deg r<\deg d\) 或 \(r=0\).
+    
+    假设 \(r\neq0\), 则
+    \[
+    r=f-pd=(1-\phi p)f-\psi pg\in M,\quad\deg r<\deg d,
+    \]
+    这与题设 \(d\) 是 \(M\) 中一个次数最低的多项式矛盾. 故
+    \[
+    r=0,\quad d\mid f.
+    \]
+    同理可证 \(d\mid g\). 故 \(d\) 为 \(f,g\) 的公因式.
+
+    再证 \(d=(f,g)\). 任取 \(f,g\) 的公因式 \(h\), 有
+    \[
+    h\mid f,\quad h\mid g.
+    \]
+    由于
+    \[
+    d=\phi f+\psi g,
+    \]
+    故 \(h\mid d\), 因此 \(d=(f,g)\).
+\end{proof}
