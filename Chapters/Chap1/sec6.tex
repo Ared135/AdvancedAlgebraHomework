@@ -1,0 +1,103 @@
+% !TEX root = ../../main.tex
+
+\renewcommand{\thesection}{1.6}
+
+\section{重因式}\label{sec:1.6}
+
+\begin{ex}{1}\label{ex:1.6.1}
+    求下列多项式在有理数域上的标准分解:
+    \[
+    x^5-6x^4+16x^3-24x^2+20x-8.
+    \]
+\end{ex}
+
+\begin{solution}
+    设 \(f(x)=x^5-6x^4+16x^3-24x^2+20x-8\), 则 \(f'(x)=5x^4-24x^3+48x^2-48x+20\).
+
+    通过辗转相除法求得
+    \[
+    (f(x),f'(x))=x^2-2x+2.
+    \]
+    故 \(f(x)\) 有重因式 \(x^2-2x+2\), 即
+    \[
+    (x^2-2x+2)^2\mid f(x).
+    \]
+    通过长除法求得
+    \[
+    \frac{f(x)}{(x^2-2x+2)^2}=x-2.
+    \]
+    故
+    \[
+    f(x)=(x^2-2x+2)^2(x-2).\qedhere
+    \]
+\end{solution}
+
+\begin{ex}{8}\label{ex:1.6.8}
+    设 \(f(x)\) 是 \(n\) 次多项式, \(n\geq1\).
+    证明 \(f'(x)\mid f(x)\) 当且仅当 \(f(x)=a(x-b)^n\),
+    其中 \(a,b\) 是数且 \(a\neq0\).
+\end{ex}
+
+\begin{proof}
+    充分性. \(f'(x)=an(x-b)^{n-1}\).
+    因此
+    \[
+    (x-b)f'(x)=nf(x),
+    \]
+    故有
+    \[
+    f'(x)\mid nf(x).
+    \]
+    由 \(n\) 为正整数, 有 \((f'(x),n)=1\), 故
+    \[
+    f'(x)\mid f(x).
+    \]
+    必要性. 设 \(f_1\) 为与 \(f\) 相伴的首一多项式. 设 \(f_1\) 的标准分解为
+    \[
+    f_1=\prod_{i=1}^{t}p_i^{k_i},
+    \]
+    则
+    \[
+    (f_1,f_1')=\prod_{i=1}^{t}p_i^{k_i-1},
+    \]
+    故
+    \begin{equation}
+        \frac{f_1}{(f_1,f_1')}=\prod_{i=1}^{t}p_i.
+        \label{eq:1.6.8-Multiplication}
+    \end{equation}
+    设 \(f=af_1\), 则 \(f'=af_1'\), 故有 \(f_1'\) 的首项系数为 \(n\), 且
+    \[
+    f_1'\mid f_1,
+    \]
+    故\((f_1,f_1')=\frac{1}{n}f_1'\). 设 \(f_1=gf_1'\),
+    则 \(g\) 的首项系数为 \(\frac{1}{n}\), 且
+    \[
+    \deg g=\deg f_1-\deg f_1'=\deg f-\deg f'=n-(n-1)=1.
+    \]
+    设 \(g(x)=\frac{1}{n}(x-b)\), 由式~\eqref{eq:1.6.8-Multiplication}, 有
+    \[
+    \prod_{i=1}^{t}p_i(x)=ng(x)=x-b.
+    \]
+    故 \(t=1,p_1(x)=x-b,f_1(x)=(x-b)^n,f(x)=a(x-b)^n\).
+\end{proof}
+
+\begin{ex}{10}\label{ex:1.6.10}
+    设
+    \[
+    f(x)=\sum_{i=0}^n\frac{x^i}{i!},
+    \]
+    证明 \(f(x)\) 在任何数域上均无重因式.
+\end{ex}
+
+\begin{proof}
+    \(f(x)\) 的导式
+    \[
+    f'(x)=\sum_{i=1}^n\frac{x^{i-1}}{(i-1)!}=\sum_{i=0}^{n-1}\frac{x^i}{i!}.
+    \]
+    则
+    \[
+    (f(x),f'(x))=(f(x),f(x)-f'(x))=\p{f(x),\frac{x^n}{n!}}=(f(x),x^n).
+    \]
+    由于 \(f(0)=1\neq0\), 故 \((f(x),x)=1\), 故 \((f(x),x^n)=1\),
+    故 \((f(x),f'(x))=1\), 因此 \(f(x)\) 在任何数域上均无重因式.
+\end{proof}
