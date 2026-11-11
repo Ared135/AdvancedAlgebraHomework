@@ -1,0 +1,50 @@
+% !TEX root="../../main.tex"
+
+\renewcommand{\thesection}{1.10}
+
+\section{对称多项式}\label{sec:1.10}
+
+\begin{ex}{4}\label{ex:1.10.4}
+    将下面对称多项式表示成初等对称多项式的多项式.
+    \[
+    x^3+y^3+z^3-3xyz.
+    \]
+\end{ex}
+
+\begin{solution}
+    设 \(f=x^3+y^3+z^3-3xyz\), 将 \(f\) 按字典序应写为
+    \[
+    x^3-3xyz+y^3+z^3.
+    \]
+
+    令 \(g_1=\sigma_1^3\), 有 \(\lt(f)=\lt(g_1)\). 将 \(p_1=f-g_1\) 按字典序应写为
+    \[
+    p_1=-3x^2y-3x^2z-3xy^2-9xyz-3xz^2-3y^2z-3yz^2.
+    \]
+
+    令 \(g_2=-3\sigma_1\sigma_2\), 有 \(\lt(p_1)=\lt(g_2)\), 且 \(p_1-g_2=0\).
+
+    因此
+    \[
+    f=\sigma_1^3-3\sigma_1\sigma_2=(x+y+z)^3-3(x+y+z)(xy+yz+zx).\qedhere
+    \]
+\end{solution}
+
+\begin{ex}{8}\label{ex:1.10.8}
+    证明对于任意 \(a_1,a_2,\cdots,a_n\in\Omega\) 都有 \(b_1,b_2,\cdots,b_n\in\C\) 使得
+    \[
+    \sigma_i(b_1,b_2,\cdots,b_n)=a_i,\quad i=1,2,\cdots,n.
+    \]
+\end{ex}
+
+\begin{proof}
+    规定 \(a_0=1\), 构造 \(n\) 次多项式
+    \[
+    f(x)=\sum_{i=0}^{n}(-1)^ia_ix^i,
+    \]
+    设其在 \(\C\) 的 \(n\) 个根为 \(x_1,x_2,\cdots,x_n\). 由 Vièta 定理, 有
+    \[
+    a_i=\sigma_i(x_1,x_2,\cdots,x_n),\quad i=1,2,\cdots,n.
+    \]
+    令 \(b_1=x_1,b_2=x_2,\cdots,b_n=x_n\) 即可.
+\end{proof}
