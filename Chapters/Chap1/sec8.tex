@@ -1,0 +1,68 @@
+% !TEX root=../../main.tex
+
+\renewcommand{\thesection}{1.8}
+
+\section{有理数域上的多项式}\label{sec:1.8}
+
+\begin{ex}{2}\label{ex:1.8.2}
+    求多项式 \(x^4+x^3+2x^2+4x+2\) 在有理数域上的标准分解.
+\end{ex}
+
+\begin{solution}
+    首一的整系数多项式的有理根都是整数, 且为常数项的因子.
+    故 \(x^4+x^3+2x^2+4x+2\) 的可能有理根为 \(\pm1,\pm2\).
+    逐一尝试, 发现 \(-1\) 为 \(x^4+x^3+2x^2+4x+2\) 的根.
+    
+    通过长除法求得
+    \[
+    x^4+x^3+2x^2+4x+2=(x+1)(x^3+2x+2).
+    \]
+
+    \(x^3+2x+2\) 的可能有理根为 \(\pm1,\pm2\). 逐一尝试, 发现 \(x^3+2x+2\) 无有理根.
+
+    因此 \(x^4+x^3+2x^2+4x+2\) 在有理数域上的标准分解为
+    \[
+    x^4+x^3+2x^2+4x+2=(x+1)(x^3+2x+2).\qedhere
+    \]
+\end{solution}
+
+\begin{ex}{3}\label{ex:1.8.3}
+    设 \(f(x)\in\Z[x]\) 且 \(f(0),f(1)\) 皆为奇数. 证明 \(f(x)\) 没有整数根.
+\end{ex}
+
+\begin{proof}
+    设
+    \[
+    f(x)=\sum_{i=0}^na_ix^i.
+    \]
+
+    由题意, \(f(0)=a_0\) 为奇数, \(\displaystyle f(1)=\sum_{i=0}^na_i\) 为奇数.
+
+    假设 \(f(x)\) 有整数根 \(k\), 则 \(f(k)=0\), 为偶数.
+
+    若 \(k\) 为偶数, 则 \(a_ik^i\) 为偶数 (\(i=1,2,\cdots,n\)),
+    故 \(f(x)\) 的奇偶性同 \(a_0=f(0)\), 为奇数, 矛盾;
+    若 \(k\) 为奇数, 则 \(a_ik^i\) 的奇偶性同 \(a_i\) (\(i=1,2,\cdots,n\)),
+    故 \(f(x)\) 的奇偶性同 \(\displaystyle\sum_{i=0}^na_i=f(1)\), 为奇数, 矛盾.
+
+    因此 \(f(x)\) 无整数根.
+\end{proof}
+
+\begin{ex}{11}\label{ex:1.8.11}
+    设 \(p\) 是素数. 证明 \(f(x)=x^{p-1}+x^{p-2}+\cdots+x+1\) 是 \(\Q\) 上的既约多项式.
+\end{ex}
+
+\begin{proof}
+    注意到
+    \[
+    f(x+1)=\sum_{i=0}^{p-1}(x+1)^i=\frac{(x+1)^p-1}{x}=\sum_{i=0}^{p-1}\binom{p}{i+1}x^i.
+    \]
+
+    取 \(q=p\), 有
+    \begin{gather*}
+        q\mid\binom{p}{i+1},\quad i=0,1,\cdots,p-2;\\
+        q\nmid\binom{p}{p-1+1}=1;\\
+        q^2\nmid\binom{p}{p-1}=p.
+    \end{gather*}
+    由 Eisenstein 判别法可知 \(f(x)\) 是 \(\Q\) 上的既约多项式.
+\end{proof}
