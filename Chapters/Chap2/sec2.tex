@@ -1,0 +1,85 @@
+% !TEX root = ../../main.tex
+
+\renewcommand{\thesection}{2.2}
+
+\section{行列式的性质}\label{sec:2.2}
+
+\begin{ex}{1}\label{ex:2.2.1}
+    设 \(D=\vsmallmatrix{\alpha_1 & \alpha_2 & \alpha_3}\) 是 \(3\) 阶行列式.
+    已知 \(D=2\), 求 \(\vsmallmatrix{3\alpha_2+2\alpha_3 & \alpha_1 & -2\alpha_2}\).
+\end{ex}
+
+\begin{solution}
+    由行列式的性质, 有
+    \begin{align*}
+        \vsmallmatrix{3\alpha_2+2\alpha_3 & \alpha_1 & -2\alpha_2}
+        &=\vsmallmatrix{3\alpha_2+2\alpha_3+\frac{3}{2}\cdot(-2\alpha_2) & \alpha_1 & -2\alpha_2}\\
+        &=2\cdot(-2)\cdot\vsmallmatrix{\alpha_3 & \alpha_1 & \alpha_2}\\
+        &=-4\cdot\vsmallmatrix{\alpha_1 & \alpha_2 & \alpha_3}\\
+        &=-4\cdot2=-8\qedhere
+    \end{align*}
+\end{solution}
+
+\begin{ex}{7}\label{ex:2.2.7}
+    设 \(f(x)=
+    \begin{vmatrix}
+        x+1 & 1 & \cdots & 1\\
+        1 & x+1 & \ddots & \vdots\\
+        \vdots & \ddots & \ddots & 1\\
+        1 & \cdots & 1 & x+1
+    \end{vmatrix}
+    \), 求 \(f(x)\) 的根.
+\end{ex}
+
+\begin{solution}
+    设 \(f(x)\) 为 \(n\) 阶行列式, 设 \(f(x)=\vsmallmatrix{\alpha_1 & \alpha_2 & \cdots & \alpha_n}\).
+    由行列式的性质, 有
+    \begin{align*}
+        f(x)&=\vsmallmatrix{\sum_{i=1}^{n}\alpha_i & \alpha_2 & \alpha_3 & \cdots & \alpha_n}\\
+        &=\vsmallmatrix{x+n & \alpha_2 & \alpha_3 & \cdots & \alpha_n}\\
+        &=(x+n)\vsmallmatrix{1 & \alpha_2 & \alpha_3 & \cdots & \alpha_n}\\
+        &=(x+n)\vsmallmatrix{1 & \alpha_2-1 & \alpha_3-1 & \cdots & \alpha_n-1}\\
+        &=(x+n)
+        \begin{vmatrix}
+            1 & 0 & 0 & \cdots & 0\\
+            1 & x & 0 & \cdots & 0\\
+            1 & 0 & x & \cdots & 0\\
+            \vdots & \vdots & \vdots & \ddots & \vdots\\
+            1 & 0 & 0 & \cdots & x
+        \end{vmatrix}\\
+        &=(x+n)x^{n-1}.
+    \end{align*}
+    因此, 若 \(n=1\), 则 \(f(x)\) 的根为 \(-1\); 若 \(n\geq2\), 则 \(f(x)\) 的根为 \(-n\) 和 \(0\).
+\end{solution}
+
+\begin{ex}{8}\label{ex:2.2.8}
+    计算行列式
+    \[
+    \begin{vmatrix}
+        x_1-a & x_2 & \cdots & x_n\\
+        x_1 & x_2-a & \cdots & x_n\\
+        \vdots & \vdots & \ddots & \vdots\\
+        x_1 & x_2 & \cdots & x_n-a
+    \end{vmatrix}.
+    \]
+\end{ex}
+
+\begin{solution}
+    设待求行列式为 \(\det(a_{ij})=\vsmallmatrix{\alpha_1 & \alpha_2 & \cdots & \alpha_n}\).
+    由行列式的性质, 有
+    \begin{align*}
+        \det(a_{ij})&=\vsmallmatrix{\sum_{i=1}^{n}\alpha_i & \alpha_2 & \cdots & \alpha_n}\\
+        &=\vsmallmatrix{\sum_{i=1}^{n}x_i-a & \alpha_2 & \cdots & \alpha_n}\\
+        &=\p{\sum_{i=1}^{n}x_i-a}\vsmallmatrix{1 & \alpha_2 & \cdots & \alpha_n}\\
+        &=\p{\sum_{i=1}^{n}x_i-a}\vsmallmatrix{1 & \alpha_2-x_2 & \alpha_3-x_3 & \cdots & \alpha_n-x_n}\\
+        &=\p{\sum_{i=1}^{n}x_i-a}
+        \begin{vmatrix}
+            1 & 0 & 0 & \cdots & 0\\
+            1 & -a & 0 & \cdots & 0\\
+            1 & 0 & -a & \cdots & 0\\
+            \vdots & \vdots & \vdots & \ddots & \vdots\\
+            1 & 0 & 0 & \cdots & -a
+        \end{vmatrix}\\
+        &=(-a)^{n-1}\p{\sum_{i=1}^{n}x_i-a}.\qedhere
+    \end{align*}
+\end{solution}
