@@ -1,0 +1,179 @@
+% !TEX root = ../../main.tex
+
+\renewcommand{\thesection}{2.3}
+
+\section{Laplace 定理}\label{sec:2.3}
+
+\begin{ex}{3}\label{ex:2.3.3}
+    设 \(D=
+    \begin{vmatrix}
+        a_1 & a_2 & \cdots & a_n\\
+        a_2 & 1 & &\\
+        \vdots & & \ddots &\\
+        a_n & & & 1
+    \end{vmatrix}
+    \), 求 \(D\) 的第一列元素的代数余子式之和.
+\end{ex}
+
+\begin{solution}
+    设 \(D=\vsmallmatrix{\alpha_1 & \alpha_2 & \cdots & \alpha_n},D'=\vsmallmatrix{1 & \alpha_2 & \cdots & \alpha_n}\),
+    由按列展开定理, \(D'\) 即为所求.
+
+    由行列式的性质,
+    \begin{align*}
+        D'&=\vsmallmatrix{1 & \alpha_2 & \cdots & \alpha_n}\\
+        &=\vsmallmatrix{1-\sum_{i=2}^{n}\alpha_i & \alpha_2 & \cdots & \alpha_n}\\
+        &=
+        \begin{vmatrix}
+            1-\sum\limits_{i=2}^{n}a_i & a_2 & \cdots & a_n\\
+            & 1 & &\\
+            & & \ddots &\\
+            & & & 1
+        \end{vmatrix}\\
+        &=1-\sum_{i=2}^{n}a_i.\qedhere
+    \end{align*}
+\end{solution}
+
+\begin{ex}{5}\label{ex:2.3.5}
+    计算 \(2n\) 阶行列式 \(
+    \begin{vmatrix}
+        a & & & & & b\\
+        & \ddots & & & \iddots &\\
+        & & a & b & &\\
+        & & b & a & &\\
+        & \iddots & & & \ddots &\\
+        b & & & & & a
+    \end{vmatrix}
+    \).
+\end{ex}
+
+\begin{solution}
+    设行列式数列 \(\{D_n\}\) 满足 \(D_1=
+    \begin{vmatrix}
+        a & b\\
+        b & a
+    \end{vmatrix}
+    \), \(D_{n+1}=
+    \begin{vmatrix}
+        a & & b\\
+        & D_n &\\
+        b & & a
+    \end{vmatrix}
+    \) (\(n\in\N^*\)).
+
+    由 Laplace 定理, 有
+    \[
+    D_{n+1}=
+    \begin{vmatrix}
+        a & b\\
+        b & a
+    \end{vmatrix}
+    \cdot(-1)^{1+2n+1+2n}D_n=D_1D_n.
+    \]
+    故有通项公式
+    \[
+    D_n=D_1^n=(a^2-b^2)^n.\qedhere
+    \]
+\end{solution}
+
+\begin{ex}{7}\label{2.3.7}
+    设 \(a_1,a_2,\cdots,a_n\) 互异, 求多项式 \(f(x)=
+    \begin{vmatrix}
+        1 & 1 & \cdots & 1\\
+        x & a_1 & \cdots & a_n\\
+        \vdots & \vdots & & \vdots\\
+        x^n & a_1^n & \cdots & a_n^n
+    \end{vmatrix}
+    \) 的根.
+\end{ex}
+
+\begin{solution}
+    该行列式为 Vandermonde 行列式, 故
+    \[
+    f(x)=\prod_{1\leq i<j\leq n}(a_j-a_i)\cdot\prod_{i=1}^n(x-a_i),
+    \]
+    故 \(f(x)\) 的根有 \(a_1,a_2,\cdots,a_n\).
+\end{solution}
+
+\begin{ex}{8}\label{2.3.8}
+    求下面 \(n\) 阶行列式 \(\det(a_{ij})\).
+    \[
+    a_{ij}=a_ib_j+\delta_{ij}c_i.
+    \]
+\end{ex}
+
+\begin{solution}
+    设
+    \[    
+    \begin{vmatrix}
+        c_1 & 0 & \cdots & 0\\
+        0 & c_2 & \cdots & 0\\
+        \vdots & \vdots & \ddots & \vdots\\
+        0 & 0 & \cdots & c_n
+    \end{vmatrix}
+    =\vsmallmatrix{\gamma_1 & \gamma_2 & \cdots & \gamma_n},
+    \]
+    \begin{align*}
+        \det(a_{ij})&=
+        \begin{vmatrix}
+            a_1b_1+c_1 & a_1b_2 & \cdots & a_1b_n\\
+            a_2b_1 & a_2b_2+c_2 & \cdots & a_2b_n\\
+            \vdots & \vdots & \ddots & \vdots\\
+            a_nb_1 & a_nb_2 & \cdots & a_nb_n+c_n
+        \end{vmatrix}\\
+        &=\vsmallmatrix{b_1\alpha+\gamma_1 & b_2\alpha+\gamma_2 & \cdots & b_n\alpha+\gamma_n}.
+    \end{align*}
+    则有
+    \begin{align*}
+        \det(a_{ij})
+        &=\vsmallmatrix{b_1\alpha+\gamma_1 & b_2\alpha+\gamma_2 & \cdots & b_n\alpha+\gamma_n}\\
+        &=\sum_{S\in\{1,2,\cdots,n\}}\vsmallmatrix{\beta_S(1) & \beta_S(2) & \cdots & \beta_S(n)},
+    \end{align*}
+    其中
+    \[
+    \beta_S(t)=
+    \begin{cases}
+    b_t\alpha,& t\in S,\\
+    \gamma_t,& t\notin S.
+    \end{cases}
+    \]
+
+    当 \(|S|\geq2\), 设 \(i,j\in S\) 满足 \(i\neq j\), 则
+    \begin{align*}
+        \vsmallmatrix{\beta_S(1) & \beta_S(2) & \cdots & \beta_S(n)}
+        &=\vsmallmatrix{\cdots & b_i\alpha & \cdots & b_j\alpha & \cdots}\\
+        &=b_ib_j\vsmallmatrix{\cdots & \alpha & \cdots & \alpha & \cdots}\\
+        &=0.
+    \end{align*}
+
+    当 \(|S|=1\), 设 \(S=\{i\}\), 由按行展开定理, 有
+    \begin{align*}
+        &\vsmallmatrix{\beta_S(1) & \beta_S(2) & \cdots & \beta_S(n)}
+        =\vsmallmatrix{\gamma_1 & \cdots & \gamma_{i-1} & b_i\alpha & \gamma_{i+1} & \cdots & \gamma_n}\\
+        ={}&
+        \begin{vmatrix}
+            c_1 & & & a_1b_i & & &\\
+            & \ddots & & \vdots & & &\\
+            & & c_{i-1} & a_{i-1}b_i & & &\\
+            & & & a_ib_i & & &\\
+            & & & a_{i+1}b_i & c_{i+1} & &\\
+            & & & \vdots & & \ddots &\\
+            & & & a_nb_i & & & c_n
+        \end{vmatrix}
+        =\frac{a_ib_i}{c_i}\cdot(-1)^{i+i}\prod_{j=1}^nc_j
+        =\frac{a_ib_i}{c_i}\prod_{j=1}^nc_j.
+    \end{align*}
+
+    当 \(S=\varnothing\), 有
+    \[
+    \vsmallmatrix{\beta_S(1) & \beta_S(2) & \cdots & \beta_S(n)}=\prod_{j=1}^nc_j.
+    \]
+
+    综上, 有
+    \begin{align*}
+        \det(a_{ij})
+        &=\vsmallmatrix{b_1\alpha+\gamma_1 & b_2\alpha+\gamma_2 & \cdots & b_n\alpha+\gamma_n}\\
+        &=\sum_{S\in\{1,2,\cdots,n\}}\vsmallmatrix{\beta_S(1) & \beta_S(2) & \cdots & \beta_S(n)}\\
+        &=\prod_{j=1}^nc_j+\sum_{i=1}^n\frac{a_ib_i}{c_i}\prod_{j=1}^nc_j.\qedhere
+    \end{align*}
+\end{solution}
